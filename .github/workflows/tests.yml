@@ -28,13 +28,13 @@ jobs:
           # submodules: true
         run: |
           git clone -b dev https://github.com/SeedSigner/seedsigner.git
-          cd seedsigner
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - name: Install dependencies
         run: |
+          cd seedsigner
           sudo apt-get install libzbar0
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt -r l10n/requirements-l10n.txt
@@ -46,6 +46,7 @@ jobs:
       #     mv ./seedsigner-screenshots/* ./artifacts/dev/
       - name: Wipe out the translations submodule
         run: |
+          cd seedsigner
           git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
           rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
           git rm -f src/seedsigner/resources/seedsigner-translations
@@ -56,15 +57,18 @@ jobs:
         #   path: src/seedsigner/resources/seedsigner-translations
         #   # ref: ${{ github.sha }}
         run: |
+          cd seedsigner
           git clone ${{ github.repositoryUrl}} src/seedsigner/resources/seedsigner-translations
           cd src/seedsigner/resources/seedsigner-translations
           git checkout ${{ github.sha }}
           cd ../../../../
       - name: Compile updated translations catalogs
         run: |
+          cd seedsigner
           python setup.py compile_catalog
       - name: Generate latest screenshots
         run: |
+          cd seedsigner
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
