@@ -65,6 +65,8 @@ jobs:
         run: |
           mkdir -p artifacts/diff
           python src/resources/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
+      - name: Clean up artifacts
+        run: |
           rm -rf ./artifacts/latest
           rm -rf ./artifacts/dev
       - name: Archive CI Artifacts
