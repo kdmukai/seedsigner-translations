@@ -19,6 +19,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
     steps:
       - name: Setup Environment (PR)  
         if: ${{ github.event_name == 'pull_request' }}
@@ -75,17 +77,19 @@ jobs:
       - name: Generate latest screenshots
         run: |
           rm -rf seedsigner-screenshots
-          mkdir -p artifacts/$BUILD_TAG
+          mkdir -p artifacts/$BRANCH_NAME
           python -m pytest tests/screenshot_generator/generator.py
-          mv ./seedsigner-screenshots/* ./artifacts/$BUILD_TAG/
+          mv ./seedsigner-screenshots/* ./artifacts/$BRANCH_NAME/
       - name: Diff screenshots
         run: |
           mkdir -p artifacts/diff
-          python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/$BUILD_TAG ./artifacts/diff
+          python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/$BRANCH_NAME ./artifacts/diff
       - name: Clean up artifacts
         run: |
-          rm -rf ./artifacts/$BUILD_TAG
+          rm -rf ./artifacts/$BRANCH_NAME
           rm -rf ./artifacts/dev
+          mv ./artifacts/diff/* ./artifacts
+          rmdir ./artifacts/diff
       - name: Archive CI Artifacts
         uses: actions/upload-artifact@v3
         with:
