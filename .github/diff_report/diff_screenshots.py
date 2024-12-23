@@ -87,7 +87,7 @@ for file in list_files_recursively(args.after_dir):
 only_in_before = set(paths_before) - set(paths_after)
 
 html_content = "<h1>Screenshots diff report</h1>"
-html_content += f"""<p>Comparing {before_branch_name} to <a href="https://github.com/SeedSigner/seedsigner-translations/compare/dev...kdmukai:seedsigner-translations:{after_branch_name}" target="github">{after_branch_name}</a></p></hr>"""
+html_content += f"""<p>Comparing {before_branch_name} to <a href="https://github.com/SeedSigner/seedsigner-translations/compare/dev...kdmukai:seedsigner-translations:{after_branch_name}" target="github">{after_branch_name}</a></p>"""
 output_dir_before = os.path.join(args.output_dir, "before")
 output_dir_after = os.path.join(args.output_dir, "after")
 os.makedirs(output_dir_before, exist_ok=True)
@@ -98,14 +98,14 @@ for screenshot_path in only_in_before:
     print(f"Screenshot only in before: {locale}: {screenshot_name}")
     os.makedirs(os.path.join(output_dir_before, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.before_dir, screenshot_path), os.path.join(output_dir_before, screenshot_path))
-    html_content += f"<p><h4>{locale}: REMOVED {screenshot_name}</h4><img src='{os.path.join('before', screenshot_path)}'></p>"
+    html_content += f"<p>{locale}: REMOVED {screenshot_name}</br><img src='{os.path.join('before', screenshot_path)}'></p>"
 
 for screenshot_path in only_in_after:
     locale, screenshot_name = get_locale_and_screenshot_name(screenshot_path)
     print(f"Screenshot only in after: {locale}: {screenshot_name}")
     os.makedirs(os.path.join(output_dir_after, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.after_dir, screenshot_path), os.path.join(output_dir_after, screenshot_path))
-    html_content += f"<p><h4>{locale}: ADDED {screenshot_name}</h4><img src='{os.path.join('after', screenshot_path)}'></p>"
+    html_content += f"<p>{locale}: ADDED {screenshot_name}</br><img src='{os.path.join('after', screenshot_path)}'></p>"
 
 for screenshot_path in diffs:
     locale, screenshot_name = get_locale_and_screenshot_name(screenshot_path)
@@ -115,7 +115,7 @@ for screenshot_path in diffs:
     os.makedirs(os.path.join(output_dir_after, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.before_dir, screenshot_path), os.path.join(output_dir_before, screenshot_path))
     shutil.copy(os.path.join(args.after_dir, screenshot_path), os.path.join(output_dir_after, screenshot_path))
-    html_content += f"<p><h4>{locale}: {screenshot_name}</h4><img src='{os.path.join('before', screenshot_path)}'>&nbsp;<img src='{os.path.join('after', screenshot_path)}'></p>"
+    html_content += f"<p>{locale}: {screenshot_name}</br><img src='{os.path.join('before', screenshot_path)}'>&nbsp;<img src='{os.path.join('after', screenshot_path)}'></p>"
 
 if not only_in_after and not only_in_before and not diffs:
     print("No differences found")

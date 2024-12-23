@@ -95,7 +95,7 @@ jobs:
         with:
           name: ci-artifacts
           path: artifacts/**
-          retention-days: 7
+          retention-days: 60
         # Upload also when tests fail. The workflow result (red/green) will
         # be not effected by this.
         if: always()
