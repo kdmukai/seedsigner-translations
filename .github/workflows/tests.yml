@@ -75,6 +75,7 @@ jobs:
           cd seedsigner-translations
           git checkout $BUILD_TAG
           cd ..
+          rm -rf seedsigner/src/seedsigner/resources/seedsigner-translations
           cp -r seedsigner-translations seedsigner/src/seedsigner/resources/
       - name: Compile updated translations catalogs
         run: |
