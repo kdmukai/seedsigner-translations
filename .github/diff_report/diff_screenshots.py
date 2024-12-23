@@ -90,25 +90,28 @@ os.makedirs(output_dir_before, exist_ok=True)
 os.makedirs(output_dir_after, exist_ok=True)
 
 for screenshot_path in only_in_before:
-    print(f"Screenshot only in before: {screenshot_path} | {output_dir_before=}")
+    locale, screenshot_name = get_locale_and_screenshot_name(screenshot_path)
+    print(f"Screenshot only in before: {locale}: {screenshot_name}")
     os.makedirs(os.path.join(output_dir_before, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.before_dir, screenshot_path), os.path.join(output_dir_before, screenshot_path))
-    html_content += f"<p><h2>{screenshot_path.split(os.path.sep)[1].upper}: REMOVED {screenshot_path.split(os.path.sep)[-1].split('.')[0]}</h2><img src='{os.path.join('before', screenshot_path)}'></p>"
+    html_content += f"<p><h3>{locale}: REMOVED {screenshot_name}</h3><img src='{os.path.join('before', screenshot_path)}'></p>"
 
 for screenshot_path in only_in_after:
-    print(f"Screenshot only in after: {screenshot_path} | {output_dir_after=}")
+    locale, screenshot_name = get_locale_and_screenshot_name(screenshot_path)
+    print(f"Screenshot only in after: {locale}: {screenshot_name}")
     os.makedirs(os.path.join(output_dir_after, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.after_dir, screenshot_path), os.path.join(output_dir_after, screenshot_path))
-    html_content += f"<p><h2>{screenshot_path.split(os.path.sep)[1].upper}: ADDED {screenshot_path.split(os.path.sep)[-1].split('.')[0]}</h2><img src='{os.path.join('after', screenshot_path)}'></p>"
+    html_content += f"<p><h3>{locale}: ADDED {screenshot_name}</h3><img src='{os.path.join('after', screenshot_path)}'></p>"
 
 for screenshot_path in diffs:
-    print(f"Screenshot different: {screenshot_path}")
+    locale, screenshot_name = get_locale_and_screenshot_name(screenshot_path)
+    print(f"Screenshot different: {locale}: {screenshot_name}")
     # Copy both screenshots to the output dir
     os.makedirs(os.path.join(output_dir_before, os.path.dirname(screenshot_path)), exist_ok=True)
     os.makedirs(os.path.join(output_dir_after, os.path.dirname(screenshot_path)), exist_ok=True)
     shutil.copy(os.path.join(args.before_dir, screenshot_path), os.path.join(output_dir_before, screenshot_path))
     shutil.copy(os.path.join(args.after_dir, screenshot_path), os.path.join(output_dir_after, screenshot_path))
-    html_content += f"<p><h2>{screenshot_path.split(os.path.sep)[1].upper}: {screenshot_path.split(os.path.sep)[-1].split('.')[0]}</h2><img src='{os.path.join('before', screenshot_path)}'>&nbsp;<img src='{os.path.join('after', screenshot_path)}'></p>"
+    html_content += f"<p><h3>{locale}: {screenshot_name}</h3><img src='{os.path.join('before', screenshot_path)}'>&nbsp;<img src='{os.path.join('after', screenshot_path)}'></p>"
 
 if not only_in_after and not only_in_before and not diffs:
     print("No differences found")
