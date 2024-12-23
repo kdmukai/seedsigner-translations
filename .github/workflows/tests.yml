@@ -41,27 +41,19 @@ jobs:
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/dev/
-      - name: Wipe out the translations submodule
-        run: |
-          git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
-          rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
-          git rm -f src/seedsigner/resources/seedsigner-translations
-          rm -rf src/seedsigner/resources/seedsigner-translations
+      # - name: Wipe out the translations submodule
+      #   run: |
+      #     git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
+      #     rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
+      #     git rm -f src/seedsigner/resources/seedsigner-translations
+      #     rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
           path: src/seedsigner/resources/seedsigner-translations
           # ref: ${{ github.sha }}
-      - name: Sanity check
-        run: |
-          cd src/seedsigner/resources/seedsigner-translations
-          git status
-          git checkout ${{ github.sha }}
-          git status
-          cd ../../../../
       - name: Generate latest screenshots
         run: |
-          ls src/seedsigner/resources/
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
