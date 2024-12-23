@@ -55,13 +55,6 @@ jobs:
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/dev/
-      # - name: Wipe out the translations submodule
-      #   run: |
-      #     cd seedsigner
-      #     git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
-      #     rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
-      #     git rm -f src/seedsigner/resources/seedsigner-translations
-      #     rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations (PR)
         uses: actions/checkout@v3
         if: ${{ github.event_name == 'pull_request' }}
@@ -74,12 +67,6 @@ jobs:
         with:
           path: src/seedsigner/resources/seedsigner-translations
           ref: ${{ github.sha }}
-        # run: |
-        #   rm -rf src/seedsigner/resources/seedsigner-translations
-        #   git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
-        #   cd src/seedsigner/resources/seedsigner-translations
-        #   git checkout $BUILD_TAG
-        #   git status
       - name: Compile updated translations catalogs
         run: |
           python setup.py compile_catalog
@@ -88,16 +75,16 @@ jobs:
       - name: Generate latest screenshots
         run: |
           rm -rf seedsigner-screenshots
-          mkdir -p artifacts/latest
+          mkdir -p artifacts/$BUILD_TAG
           python -m pytest tests/screenshot_generator/generator.py
-          mv ./seedsigner-screenshots/* ./artifacts/latest/
+          mv ./seedsigner-screenshots/* ./artifacts/$BUILD_TAG/
       - name: Diff screenshots
         run: |
           mkdir -p artifacts/diff
-          python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
+          python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/$BUILD_TAG ./artifacts/diff
       - name: Clean up artifacts
         run: |
-          rm -rf ./artifacts/latest
+          rm -rf ./artifacts/$BUILD_TAG
           rm -rf ./artifacts/dev
       - name: Archive CI Artifacts
         uses: actions/upload-artifact@v3
