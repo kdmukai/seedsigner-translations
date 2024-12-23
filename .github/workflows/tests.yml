@@ -57,11 +57,10 @@ jobs:
         #   path: src/seedsigner/resources/seedsigner-translations
         #   # ref: ${{ github.sha }}
         run: |
-          cd seedsigner/src/seedsigner/resources/seedsigner-translations
-          git remote remove origin
-          git remote add origin https://github.com/${{ github.repository}}.git
-          git fetch origin
+          git clone https://github.com/${{ github.repository}}.git seedsigner-translations
+          cd seedsigner-translations
           git checkout ${{ github.sha }}
+          cp -r seedsigner-translations seedsigner/src/seedsigner/resources/
       - name: Compile updated translations catalogs
         run: |
           cd seedsigner
