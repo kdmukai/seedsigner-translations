@@ -44,7 +44,7 @@ jobs:
       - name: Checkout 'dev' translations
         uses: actions/checkout@v3
         with:
-          path: src/seedsigner/resources/seedigner-translations
+          path: src/seedsigner/resources/seedsigner-translations
           ref: dev
       - name: Generate current 'dev' screenshots
         run: |
@@ -56,7 +56,7 @@ jobs:
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
-          path: src/seedsigner/resources/seedigner-translations
+          path: src/seedsigner/resources/seedsigner-translations
           ref: ${{ github.sha }}
       - name: Generate latest screenshots
         run: |
@@ -66,7 +66,7 @@ jobs:
       - name: Diff screenshots
         run: |
           mkdir -p artifacts/diff
-          python src/resources/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
+          python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
       - name: Clean up artifacts
         run: |
           rm -rf ./artifacts/latest
