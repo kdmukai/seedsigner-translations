@@ -89,7 +89,7 @@ jobs:
       - name: Diff screenshots
         run: |
           mkdir -p artifacts/diff
-          python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
+          python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
       - name: Clean up artifacts
         run: |
           rm -rf ./artifacts/latest
