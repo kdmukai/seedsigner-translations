@@ -49,6 +49,7 @@ jobs:
           ref: dev
       - name: Generate current 'dev' screenshots
         run: |
+          head src/seedsigner/resources/seedsigner-translations/l10n/es/LC_MESSAGES/messages.po
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           cp -r ./seedsigner-screenshots/* ./artifacts/dev/
