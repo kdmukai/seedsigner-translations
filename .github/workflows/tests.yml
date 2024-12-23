@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment (PR)  
-        if: ${{ github.event_name == 'pull_request' }}  
-        shell: bash  
-        run: |  
-          echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}  
-      - name: Setup Environment (Push)  
-        if: ${{ github.event_name == 'push' }}  
-        shell: bash  
-        run: |  
+        if: ${{ github.event_name == 'pull_request' }}
+        shell: bash
+        run: |
+          echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}
+      - name: Setup Environment (Push)
+        if: ${{ github.event_name == 'push' }}
+        shell: bash
+        run: |
           echo "LAST_COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
       - name: Set build tag
         shell: bash
@@ -62,11 +62,18 @@ jobs:
       #     rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
       #     git rm -f src/seedsigner/resources/seedsigner-translations
       #     rm -rf src/seedsigner/resources/seedsigner-translations
-      - name: Checkout updated translations
+      - name: Checkout updated translations (PR)
         uses: actions/checkout@v3
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           path: src/seedsigner/resources/seedsigner-translations
-          ref: $LAST_COMMIT_SHA
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Checkout updated translations (Push)
+        uses: actions/checkout@v3
+        if: ${{ github.event_name == 'push' }}
+        with:
+          path: src/seedsigner/resources/seedsigner-translations
+          ref: ${{ github.sha }}
         # run: |
         #   rm -rf src/seedsigner/resources/seedsigner-translations
         #   git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
