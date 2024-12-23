@@ -67,10 +67,10 @@ jobs:
         run: |
           mkdir -p artifacts/diff
           python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
-      - name: Clean up artifacts
-        run: |
-          rm -rf ./artifacts/latest
-          rm -rf ./artifacts/dev
+      # - name: Clean up artifacts
+      #   run: |
+      #     rm -rf ./artifacts/latest
+      #     rm -rf ./artifacts/dev
       - name: Archive CI Artifacts
         uses: actions/upload-artifact@v3
         with:
