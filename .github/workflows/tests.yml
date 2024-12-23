@@ -53,6 +53,7 @@ jobs:
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           cp -r ./seedsigner-screenshots/ ./artifacts/dev/
+          ls ./artifacts/dev
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
@@ -63,6 +64,7 @@ jobs:
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
           cp -r ./seedsigner-screenshots/ ./artifacts/latest/
+          ls ./artifacts/latest
       - name: Diff screenshots
         run: |
           mkdir -p artifacts/diff
