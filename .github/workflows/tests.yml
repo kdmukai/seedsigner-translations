@@ -40,8 +40,6 @@ jobs:
           repository: 'SeedSigner/seedsigner'
           ref: dev
           submodules: true
-        # run: |
-        #   git clone -b dev --recurse-submodules https://github.com/SeedSigner/seedsigner.git
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
@@ -65,16 +63,16 @@ jobs:
       #     git rm -f src/seedsigner/resources/seedsigner-translations
       #     rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
-        # uses: actions/checkout@v3
-        # with:
-        #   path: src/seedsigner/resources/seedsigner-translations
-        #   # ref: ${{ github.sha }}
-        run: |
-          rm -rf src/seedsigner/resources/seedsigner-translations
-          git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
-          cd src/seedsigner/resources/seedsigner-translations
-          git checkout $BUILD_TAG
-          git status
+        uses: actions/checkout@v3
+        with:
+          path: src/seedsigner/resources/seedsigner-translations
+          ref: $LAST_COMMIT_SHA
+        # run: |
+        #   rm -rf src/seedsigner/resources/seedsigner-translations
+        #   git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
+        #   cd src/seedsigner/resources/seedsigner-translations
+        #   git checkout $BUILD_TAG
+        #   git status
       - name: Compile updated translations catalogs
         run: |
           python setup.py compile_catalog
