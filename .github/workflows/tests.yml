@@ -53,7 +53,7 @@ jobs:
           head src/seedsigner/resources/seedsigner-translations/l10n/es/LC_MESSAGES/messages.po
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
-          mv -r ./seedsigner-screenshots/* ./artifacts/dev/
+          mv ./seedsigner-screenshots/* ./artifacts/dev/
           ls ./artifacts/dev
       - name: Checkout updated translations
         uses: actions/checkout@v3
@@ -64,7 +64,7 @@ jobs:
         run: |
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
-          mv -r ./seedsigner-screenshots/* ./artifacts/latest/
+          mv ./seedsigner-screenshots/* ./artifacts/latest/
           ls ./artifacts/latest
       - name: Diff screenshots
         run: |
