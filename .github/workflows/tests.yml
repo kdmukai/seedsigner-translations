@@ -47,14 +47,18 @@ jobs:
           rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
           git rm -f src/seedsigner/resources/seedsigner-translations
           rm -rf src/seedsigner/resources/seedsigner-translations
-      - name: Sanity check
-        run: |
-          ls src/seedsigner/resources/
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
           path: src/seedsigner/resources/seedsigner-translations
           # ref: ${{ github.sha }}
+      - name: Sanity check
+        run: |
+          cd src/seedsigner/resources/seedsigner-translations
+          git status
+          git checkout ${{ github.sha }}
+          git status
+          cd ../../../../
       - name: Generate latest screenshots
         run: |
           ls src/seedsigner/resources/
