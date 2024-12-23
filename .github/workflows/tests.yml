@@ -58,7 +58,7 @@ jobs:
         #   # ref: ${{ github.sha }}
         run: |
           cd seedsigner
-          git clone ${{ github.repositoryUrl}} src/seedsigner/resources/seedsigner-translations
+          git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
           cd src/seedsigner/resources/seedsigner-translations
           git checkout ${{ github.sha }}
           cd ../../../../
