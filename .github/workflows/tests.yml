@@ -43,18 +43,16 @@ jobs:
           pip install -r requirements.txt -r tests/requirements.txt
           pip install .
           rm -rf seedsigner-screenshots
-      # - name: Checkout 'dev' translations
-      #   uses: actions/checkout@v3
-      #   with:
-      #     path: src/seedsigner/resources/seedsigner-translations
-      #     ref: dev
       - name: Generate current 'dev' screenshots
         run: |
-          ls src/seedsigner/resources/seedsigner-translations/l10n/es/LC_MESSAGES
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/dev/
-          ls ./artifacts/dev
+      - name: Wipe out the translations submodule
+        run: |
+          git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
+          rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
+          git rm -f src/seedsigner/resources/seedsigner-translations
           rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
         uses: actions/checkout@v3
@@ -63,6 +61,7 @@ jobs:
           ref: ${{ github.sha }}
       - name: Generate latest screenshots
         run: |
+          echo ${{ github.sha }}
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
