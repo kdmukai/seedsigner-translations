@@ -27,7 +27,7 @@ jobs:
         #   ref: dev
           # submodules: true
         run: |
-          git clone -b dev https://github.com/SeedSigner/seedsigner.git
+          git clone -b dev --recurse-submodules https://github.com/SeedSigner/seedsigner.git
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
@@ -44,24 +44,24 @@ jobs:
       #     mkdir -p artifacts/dev
       #     python -m pytest tests/screenshot_generator/generator.py
       #     mv ./seedsigner-screenshots/* ./artifacts/dev/
-      - name: Wipe out the translations submodule
-        run: |
-          cd seedsigner
-          git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
-          rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
-          git rm -f src/seedsigner/resources/seedsigner-translations
-          rm -rf src/seedsigner/resources/seedsigner-translations
+      # - name: Wipe out the translations submodule
+      #   run: |
+      #     cd seedsigner
+      #     git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
+      #     rm -rf .git/modules/src/seedsigner/resources/seedsigner-translations
+      #     git rm -f src/seedsigner/resources/seedsigner-translations
+      #     rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
         # uses: actions/checkout@v3
         # with:
         #   path: src/seedsigner/resources/seedsigner-translations
         #   # ref: ${{ github.sha }}
         run: |
-          cd seedsigner
-          git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
-          cd src/seedsigner/resources/seedsigner-translations
+          cd seedsigner/src/seedsigner/resources/seedsigner-translations
+          git remote remove origin
+          git remote add origin https://github.com/${{ github.repository}}.git
+          git pull
           git checkout ${{ github.sha }}
-          cd ../../../../
       - name: Compile updated translations catalogs
         run: |
           cd seedsigner
