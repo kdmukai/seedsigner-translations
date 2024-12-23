@@ -48,11 +48,9 @@ jobs:
           ref: dev
       - name: Generate current 'dev' screenshots
         run: |
-          ls src/seedsigner/resources/
-          ls src/seedsigner/resources/seedsigner-translations
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
-          cp -r ./seedsigner-screenshots/ ./artifacts/dev/
+          cp -r ./seedsigner-screenshots/* ./artifacts/dev/
           ls ./artifacts/dev
       - name: Checkout updated translations
         uses: actions/checkout@v3
@@ -63,7 +61,7 @@ jobs:
         run: |
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
-          cp -r ./seedsigner-screenshots/ ./artifacts/latest/
+          cp -r ./seedsigner-screenshots/* ./artifacts/latest/
           ls ./artifacts/latest
       - name: Diff screenshots
         run: |
