@@ -77,8 +77,9 @@ jobs:
           git status
       - name: Compile updated translations catalogs
         run: |
-          cd seedsigner
           python setup.py compile_catalog
+          cd src/seedsigner/resources/seedsigner-translations
+          git status
       - name: Generate latest screenshots
         run: |
           rm -rf seedsigner-screenshots
