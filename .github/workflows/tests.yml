@@ -25,7 +25,7 @@ jobs:
         with:
           repository: 'SeedSigner/seedsigner'
           ref: dev
-          submodules: true
+          # submodules: true
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
@@ -34,7 +34,7 @@ jobs:
         run: |
           sudo apt-get install libzbar0
           python -m pip install --upgrade pip
-          pip install -r requirements.txt -r tests/requirements.txt
+          pip install -r requirements.txt -r tests/requirements.txt -r l10n/requirements-l10n.txt
           pip install .
       # - name: Generate current 'dev' screenshots
       #   run: |
@@ -52,6 +52,9 @@ jobs:
         with:
           path: src/seedsigner/resources/seedsigner-translations
           # ref: ${{ github.sha }}
+      - name: Compile updated translations catalogs
+        run: |
+          python setup.py compile_catalog
       - name: Generate latest screenshots
         run: |
           rm -rf seedsigner-screenshots
