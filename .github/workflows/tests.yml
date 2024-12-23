@@ -31,6 +31,7 @@ jobs:
         with:
           repository: 'SeedSigner/seedsigner'
           ref: dev
+          submodules: true
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
@@ -41,16 +42,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt
           pip install .
-          rm -rf src/seedsigner/resources/seedsigner-translations
+          # rm -rf src/seedsigner/resources/seedsigner-translations
           rm -rf seedsigner-screenshots
-      - name: Checkout 'dev' translations
-        uses: actions/checkout@v3
-        with:
-          path: src/seedsigner/resources/seedsigner-translations
-          ref: dev
+      # - name: Checkout 'dev' translations
+      #   uses: actions/checkout@v3
+      #   with:
+      #     path: src/seedsigner/resources/seedsigner-translations
+      #     ref: dev
       - name: Generate current 'dev' screenshots
         run: |
-          head src/seedsigner/resources/seedsigner-translations/l10n/es/LC_MESSAGES/messages.po
+          ls src/seedsigner/resources/seedsigner-translations/l10n/es/LC_MESSAGES
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/dev/
