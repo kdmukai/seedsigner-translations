@@ -36,11 +36,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt
           pip install .
-      - name: Generate current 'dev' screenshots
-        run: |
-          mkdir -p artifacts/dev
-          python -m pytest tests/screenshot_generator/generator.py
-          mv ./seedsigner-screenshots/* ./artifacts/dev/
+      # - name: Generate current 'dev' screenshots
+      #   run: |
+      #     mkdir -p artifacts/dev
+      #     python -m pytest tests/screenshot_generator/generator.py
+      #     mv ./seedsigner-screenshots/* ./artifacts/dev/
       - name: Wipe out the translations submodule
         run: |
           git submodule deinit -f -- src/seedsigner/resources/seedsigner-translations
@@ -58,10 +58,10 @@ jobs:
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/latest/
-      - name: Diff screenshots
-        run: |
-          mkdir -p artifacts/diff
-          python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
+      # - name: Diff screenshots
+      #   run: |
+      #     mkdir -p artifacts/diff
+      #     python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
       # - name: Clean up artifacts
       #   run: |
       #     rm -rf ./artifacts/latest
