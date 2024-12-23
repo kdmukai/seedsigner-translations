@@ -86,6 +86,7 @@ for screenshot_path in diffs:
     html_output += f"<p>{screenshot_path.split(os.path.sep)[-1].split('.')[0]}</br><img src='{os.path.join('before', screenshot_path)}'>&nbsp;<img src='{os.path.join('after', screenshot_path)}'></p>"
 
 if not only_in_after and not only_in_before and not diffs:
+    print("No differences found")
     html_output += "<p>No differences found</p>"
 
 html_output += "</body></html>"
