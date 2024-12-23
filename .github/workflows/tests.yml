@@ -20,6 +20,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Environment (PR)  
+        if: ${{ github.event_name == 'pull_request' }}  
+        shell: bash  
+        run: |  
+          echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}  
+      - name: Setup Environment (Push)  
+        if: ${{ github.event_name == 'push' }}  
+        shell: bash  
+        run: |  
+          echo "LAST_COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
+      - name: Set build tag
+        shell: bash
+        run: |
+          echo "BUILD_TAG=${LAST_COMMIT_SHA:0:7}" >> $GITHUB_ENV
       - name: Checkout main repo 'dev'
         # uses: actions/checkout@v3
         # with:
@@ -59,7 +73,7 @@ jobs:
         run: |
           git clone https://github.com/${{ github.repository}}.git seedsigner-translations
           cd seedsigner-translations
-          git checkout ${{ github.sha }}
+          git checkout $BUILD_TAG
           cp -r seedsigner-translations seedsigner/src/seedsigner/resources/
       - name: Compile updated translations catalogs
         run: |
