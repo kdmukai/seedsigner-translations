@@ -60,7 +60,7 @@ jobs:
           cd seedsigner/src/seedsigner/resources/seedsigner-translations
           git remote remove origin
           git remote add origin https://github.com/${{ github.repository}}.git
-          git pull
+          git fetch origin
           git checkout ${{ github.sha }}
       - name: Compile updated translations catalogs
         run: |
