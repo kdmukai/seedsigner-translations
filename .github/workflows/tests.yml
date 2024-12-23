@@ -44,7 +44,7 @@ jobs:
       - name: Checkout 'dev' translations
         uses: actions/checkout@v3
         with:
-          path: src/seedsigner/resources/
+          path: src/seedsigner/resources/seedigner-translations
           ref: dev
       - name: Generate current 'dev' screenshots
         run: |
@@ -56,7 +56,7 @@ jobs:
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
-          path: src/seedsigner/resources/
+          path: src/seedsigner/resources/seedigner-translations
           ref: ${{ github.sha }}
       - name: Generate latest screenshots
         run: |
