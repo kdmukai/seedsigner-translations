@@ -21,11 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main repo 'dev'
-        uses: actions/checkout@v3
-        with:
-          repository: 'SeedSigner/seedsigner'
-          ref: dev
+        # uses: actions/checkout@v3
+        # with:
+        #   repository: 'SeedSigner/seedsigner'
+        #   ref: dev
           # submodules: true
+        run: |
+          git clone -b dev https://github.com/SeedSigner/seedsigner.git
+          cd seedsigner
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
@@ -48,10 +51,15 @@ jobs:
           git rm -f src/seedsigner/resources/seedsigner-translations
           rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
-        uses: actions/checkout@v3
-        with:
-          path: src/seedsigner/resources/seedsigner-translations
-          # ref: ${{ github.sha }}
+        # uses: actions/checkout@v3
+        # with:
+        #   path: src/seedsigner/resources/seedsigner-translations
+        #   # ref: ${{ github.sha }}
+        run: |
+          git clone ${{ github.repositoryUrl}} src/seedsigner/resources/seedsigner-translations
+          cd src/seedsigner/resources/seedsigner-translations
+          git checkout ${{ github.sha }}
+          cd ../../../../
       - name: Compile updated translations catalogs
         run: |
           python setup.py compile_catalog
