@@ -42,7 +42,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt
           pip install .
-          # rm -rf src/seedsigner/resources/seedsigner-translations
           rm -rf seedsigner-screenshots
       # - name: Checkout 'dev' translations
       #   uses: actions/checkout@v3
@@ -56,6 +55,7 @@ jobs:
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/dev/
           ls ./artifacts/dev
+          rm -rf src/seedsigner/resources/seedsigner-translations
       - name: Checkout updated translations
         uses: actions/checkout@v3
         with:
@@ -63,6 +63,7 @@ jobs:
           ref: ${{ github.sha }}
       - name: Generate latest screenshots
         run: |
+          rm -rf seedsigner-screenshots
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/latest/
