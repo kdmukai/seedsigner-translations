@@ -52,11 +52,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt -r l10n/requirements-l10n.txt
           pip install .
-      # - name: Generate current 'dev' screenshots
-      #   run: |
-      #     mkdir -p artifacts/dev
-      #     python -m pytest tests/screenshot_generator/generator.py
-      #     mv ./seedsigner-screenshots/* ./artifacts/dev/
+      - name: Generate current 'dev' screenshots
+        run: |
+          mkdir -p artifacts/dev
+          python -m pytest tests/screenshot_generator/generator.py
+          mv ./seedsigner-screenshots/* ./artifacts/dev/
       # - name: Wipe out the translations submodule
       #   run: |
       #     cd seedsigner
