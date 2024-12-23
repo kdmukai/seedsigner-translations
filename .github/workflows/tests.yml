@@ -35,20 +35,19 @@ jobs:
         run: |
           echo "BUILD_TAG=${LAST_COMMIT_SHA:0:7}" >> $GITHUB_ENV
       - name: Checkout main repo 'dev'
-        # uses: actions/checkout@v3
-        # with:
-        #   repository: 'SeedSigner/seedsigner'
-        #   ref: dev
-          # submodules: true
-        run: |
-          git clone -b dev --recurse-submodules https://github.com/SeedSigner/seedsigner.git
+        uses: actions/checkout@v3
+        with:
+          repository: 'SeedSigner/seedsigner'
+          ref: dev
+          submodules: true
+        # run: |
+        #   git clone -b dev --recurse-submodules https://github.com/SeedSigner/seedsigner.git
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - name: Install dependencies
         run: |
-          cd seedsigner
           sudo apt-get install libzbar0
           python -m pip install --upgrade pip
           pip install -r requirements.txt -r tests/requirements.txt -r l10n/requirements-l10n.txt
@@ -71,26 +70,23 @@ jobs:
         #   path: src/seedsigner/resources/seedsigner-translations
         #   # ref: ${{ github.sha }}
         run: |
-          git clone https://github.com/${{ github.repository}}.git seedsigner-translations
-          cd seedsigner-translations
+          rm -rf src/seedsigner/resources/seedsigner-translations
+          git clone https://github.com/${{ github.repository}}.git src/seedsigner/resources/seedsigner-translations
+          cd src/seedsigner/resources/seedsigner-translations
           git checkout $BUILD_TAG
-          cd ..
-          rm -rf seedsigner/src/seedsigner/resources/seedsigner-translations
-          cp -r seedsigner-translations seedsigner/src/seedsigner/resources/
+          git status
       - name: Compile updated translations catalogs
         run: |
           cd seedsigner
           python setup.py compile_catalog
       - name: Generate latest screenshots
         run: |
-          cd seedsigner
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/latest
           python -m pytest tests/screenshot_generator/generator.py
           mv ./seedsigner-screenshots/* ./artifacts/latest/
       - name: Diff screenshots
         run: |
-          cd seedsigner
           mkdir -p artifacts/diff
           python src/seedsigner/resources/seedsigner-translations/.github/diff_screenshots.py ./artifacts/dev ./artifacts/latest ./artifacts/diff
       # - name: Clean up artifacts
@@ -101,7 +97,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ci-artifacts
-          path: seedsigner/artifacts/**
+          path: artifacts/**
           retention-days: 7
         # Upload also when tests fail. The workflow result (red/green) will
         # be not effected by this.
