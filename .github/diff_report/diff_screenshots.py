@@ -1,6 +1,10 @@
 """
 Utility to compare screenshots before and after a change and generate a report of the
 differences.
+
+Expected usage in a GitHub Actions workflow; compare `dev` with the `$BRANCH_NAME` in the
+associated PR that triggered the CI run:
+python src/seedsigner/resources/seedsigner-translations/.github/diff_report/diff_screenshots.py ./artifacts/dev ./artifacts/$BRANCH_NAME ./artifacts/diff
 """
 import argparse
 import glob
