@@ -1269,7 +1269,7 @@ msgstr "¡Error!"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Your transcribed SeedQR does not match your original seed!"
-msgstr "¡La Transcripción de la SeedQR no coincide con tu Llave original!"
+msgstr "¡¡La Transcripción de la SeedQR no coincide con tu Llave original!"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Review SeedQR"
@@ -1309,7 +1309,7 @@ msgstr ""
 
 #: src/seedsigner/views/seed_views.py
 msgid "multisig"
-msgstr "multifirma"
+msgstr "Multifirma"
 
 #. Inserts the seed fingerprint
 #: src/seedsigner/views/seed_views.py
