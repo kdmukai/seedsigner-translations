@@ -22,20 +22,6 @@ jobs:
     env:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
     steps:
-      - name: Setup Environment (PR)  
-        if: ${{ github.event_name == 'pull_request' }}
-        shell: bash
-        run: |
-          echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}
-      - name: Setup Environment (Push)
-        if: ${{ github.event_name == 'push' }}
-        shell: bash
-        run: |
-          echo "LAST_COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
-      - name: Set build tag
-        shell: bash
-        run: |
-          echo "BUILD_TAG=${LAST_COMMIT_SHA:0:7}" >> $GITHUB_ENV
       - name: Checkout main repo 'dev'
         uses: actions/checkout@v4
         with:
