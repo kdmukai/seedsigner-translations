@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "BUILD_TAG=${LAST_COMMIT_SHA:0:7}" >> $GITHUB_ENV
       - name: Checkout main repo 'dev'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'SeedSigner/seedsigner'
           ref: dev
@@ -59,13 +59,13 @@ jobs:
           sleep 5
           mv ./seedsigner-screenshots/* ./artifacts/dev/
       - name: Checkout updated translations (PR)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: ${{ github.event_name == 'pull_request' }}
         with:
           path: src/seedsigner/resources/seedsigner-translations
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Checkout updated translations (Push)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: ${{ github.event_name == 'push' }}
         with:
           path: src/seedsigner/resources/seedsigner-translations
