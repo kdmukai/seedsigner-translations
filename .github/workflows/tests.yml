@@ -42,7 +42,7 @@ jobs:
         run: |
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
-          sleep 5
+          sleep 10
           mv ./seedsigner-screenshots/* ./artifacts/dev/
       - name: Checkout updated translations (PR)
         uses: actions/checkout@v4
@@ -66,7 +66,7 @@ jobs:
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/$BRANCH_NAME
           python -m pytest tests/screenshot_generator/generator.py
-          sleep 5
+          sleep 10
           mv ./seedsigner-screenshots/* ./artifacts/$BRANCH_NAME/
       - name: Diff screenshots
         run: |
