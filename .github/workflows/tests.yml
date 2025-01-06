@@ -22,28 +22,14 @@ jobs:
     env:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
     steps:
-      - name: Setup Environment (PR)  
-        if: ${{ github.event_name == 'pull_request' }}
-        shell: bash
-        run: |
-          echo "LAST_COMMIT_SHA=${{ github.event.pull_request.head.sha }}" >> ${GITHUB_ENV}
-      - name: Setup Environment (Push)
-        if: ${{ github.event_name == 'push' }}
-        shell: bash
-        run: |
-          echo "LAST_COMMIT_SHA=${GITHUB_SHA}" >> ${GITHUB_ENV}
-      - name: Set build tag
-        shell: bash
-        run: |
-          echo "BUILD_TAG=${LAST_COMMIT_SHA:0:7}" >> $GITHUB_ENV
       - name: Checkout main repo 'dev'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'SeedSigner/seedsigner'
           ref: dev
           submodules: true
       - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
       - name: Install dependencies
@@ -56,16 +42,16 @@ jobs:
         run: |
           mkdir -p artifacts/dev
           python -m pytest tests/screenshot_generator/generator.py
-          sleep 5
+          sleep 10
           mv ./seedsigner-screenshots/* ./artifacts/dev/
       - name: Checkout updated translations (PR)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: ${{ github.event_name == 'pull_request' }}
         with:
           path: src/seedsigner/resources/seedsigner-translations
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Checkout updated translations (Push)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: ${{ github.event_name == 'push' }}
         with:
           path: src/seedsigner/resources/seedsigner-translations
@@ -80,7 +66,7 @@ jobs:
           rm -rf seedsigner-screenshots
           mkdir -p artifacts/$BRANCH_NAME
           python -m pytest tests/screenshot_generator/generator.py
-          sleep 5
+          sleep 10
           mv ./seedsigner-screenshots/* ./artifacts/$BRANCH_NAME/
       - name: Diff screenshots
         run: |
@@ -93,7 +79,7 @@ jobs:
           mv ./artifacts/diff/* ./artifacts
           rmdir ./artifacts/diff
       - name: Archive CI Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ci-artifacts
           path: artifacts/**
