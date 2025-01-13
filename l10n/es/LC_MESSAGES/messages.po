@@ -10,15 +10,16 @@
 # Dax Sosa, 2022
 # ronny avendano, 2024
 # Keith Mukai, 2024
+# Max Apogee, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: seedsigner 0.8.5\n"
+"Project-Id-Version: seedsigner 0.8.5-rc1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-03 14:15-0600\n"
+"POT-Creation-Date: 2024-12-30 13:43-0600\n"
 "PO-Revision-Date: 2022-04-29 13:50+0000\n"
-"Last-Translator: Keith Mukai, 2024\n"
+"Last-Translator: Max Apogee, 2025\n"
 "Language-Team: Spanish (https://app.transifex.com/seedsigner/teams/135832/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +55,7 @@ msgstr "borrar"
 #. The abbreviated label for the special key <space> on a standard keyboard.
 #: src/seedsigner/gui/keyboard.py
 msgid "space"
-msgstr "Espaciadora"
+msgstr "Espacio"
 
 #: src/seedsigner/gui/toast.py
 msgid ""
@@ -133,9 +134,8 @@ msgid "OP_RETURN"
 msgstr "OP-RETURN"
 
 #. Label for a change output in the PSBT Overview flow diagram
-#. Used in a sentence describing the address type (change or receive)
 #: src/seedsigner/gui/screens/psbt_screens.py
-#: src/seedsigner/views/psbt_views.py src/seedsigner/views/seed_views.py
+#: src/seedsigner/views/psbt_views.py
 msgid "change"
 msgstr "cambio"
 
@@ -218,11 +218,15 @@ msgstr "Mas Brillo"
 msgid "Darker"
 msgstr "Menos Brillo"
 
-#: src/seedsigner/gui/screens/screen.py src/seedsigner/views/seed_views.py
+#: src/seedsigner/gui/screens/screen.py
+#: src/seedsigner/gui/screens/seed_screens.py
+#: src/seedsigner/views/seed_views.py
 msgid "Success!"
 msgstr "¡Éxito!"
 
-#: src/seedsigner/gui/screens/screen.py src/seedsigner/views/seed_views.py
+#: src/seedsigner/gui/screens/screen.py
+#: src/seedsigner/gui/screens/seed_screens.py
+#: src/seedsigner/views/seed_views.py
 msgid "OK"
 msgstr "OK"
 
@@ -396,7 +400,7 @@ msgstr "clic para salir"
 msgid ""
 "Optionally scan your transcribed SeedQR to confirm that it reads back "
 "correctly."
-msgstr "Opcional - escanear SeedQR y confirmar se lee correcto."
+msgstr "Opcional - escanear SeedQR y confirmar que se lee correctamente."
 
 #: src/seedsigner/gui/screens/seed_screens.py
 #: src/seedsigner/views/seed_views.py src/seedsigner/views/tools_views.py
@@ -407,6 +411,25 @@ msgstr "Verificar Dirección"
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "Checking address {}"
 msgstr "Verificando dirección {}"
+
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "Address Verified"
+msgstr "Dirección Verificada"
+
+#. Describes the address type (change or receive)
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "change address"
+msgstr "Dirección de cambio"
+
+#. Describes the address type (change or receive)
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "receive address"
+msgstr "Dirección de recepción"
+
+#. Describes the address index (e.g. "index 7")
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "index {}"
+msgstr "Índice {}"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "Multisig Verification"
@@ -455,7 +478,7 @@ msgstr "Firmar Mensaje"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "derivation path"
-msgstr "ruta de Derivación"
+msgstr "Ruta de Derivación"
 
 #: src/seedsigner/gui/screens/settings_screens.py
 #: src/seedsigner/views/settings_views.py src/seedsigner/views/view.py
@@ -718,7 +741,7 @@ msgstr "Idioma para palabras de llave privada"
 
 #: src/seedsigner/models/settings_definition.py
 msgid "Persistent settings"
-msgstr "Ajustes persistente"
+msgstr "Ajustes persistentes"
 
 #: src/seedsigner/models/settings_definition.py
 msgid "Coordinator software"
@@ -1306,30 +1329,6 @@ msgid "Can't validate a single sig addr without specifying a seed"
 msgstr ""
 "No se puede validar una dirección de firma singular sin especificar una "
 "semilla."
-
-#: src/seedsigner/views/seed_views.py
-msgid "multisig"
-msgstr "Multifirma"
-
-#. Inserts the seed fingerprint
-#: src/seedsigner/views/seed_views.py
-msgid "seed {}"
-msgstr "Semilla {}"
-
-#. Used in a sentence describing the address type (change or receive)
-#: src/seedsigner/views/seed_views.py
-msgid "receive"
-msgstr "recibir"
-
-#. Address verification success message (e.g. "bc1qabc = seed 12345678's
-#. receive address #0.")
-#: src/seedsigner/views/seed_views.py
-msgid "{} = {}'s {} address #{}."
-msgstr "{} = {}'s {} dirección #{}."
-
-#: src/seedsigner/views/seed_views.py
-msgid "Address Verified"
-msgstr "Dirección Verificada"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Scan Descriptor"
