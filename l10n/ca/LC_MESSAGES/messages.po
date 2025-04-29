@@ -6,7 +6,7 @@
 # Translators:
 # notepad, 2024
 # Marcel Hernandez, 2025
-# rogersala21, 2025
+# roger, 2025
 # Jordi Llonch Esteve, 2026
 # Pol Espinasa, 2026
 # 
@@ -20,7 +20,7 @@ msgstr ""
 "Last-Translator: Pol Espinasa, 2026\n"
 "Language-Team: Catalan (https://app.transifex.com/seedsigner/teams/135832/ca/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 "Language: ca\n"

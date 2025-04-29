@@ -4,20 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 # 
 # Translators:
-# Ouou Ahah, 2025
 # Tang ZHONGCHEN, 2025
+# Ouou Ahah, 2025
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: seedsigner 0.8.5-rc1\n"
+"Project-Id-Version: seedsigner 0.8.6\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-28 13:28-0600\n"
+"POT-Creation-Date: 2025-12-26 07:32-0600\n"
 "PO-Revision-Date: 2022-04-29 13:50+0000\n"
-"Last-Translator: Tang ZHONGCHEN, 2025\n"
+"Last-Translator: Ouou Ahah, 2025\n"
 "Language-Team: Chinese Simplified (https://app.transifex.com/seedsigner/teams/135832/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 "Language: zh-Hans\n"
@@ -59,12 +59,12 @@ msgid "SD card inserted"
 msgstr "SD 卡已插入"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Review PSBT"
-msgstr "审核 PSBT"
+msgid "Review Transaction"
+msgstr "审核交易"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Review Details"
-msgstr "查看详情"
+msgid "Review details"
+msgstr "审核详情"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
 msgid "1 input"
@@ -125,12 +125,12 @@ msgid "change"
 msgstr "找零"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "PSBT Math"
-msgstr "PSBT 运算"
+msgid "Transaction Math"
+msgstr "交易计算"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Review Recipients"
-msgstr "查看收款人"
+msgid "Review recipients"
+msgstr "审核收款方"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
 msgid "input"
@@ -147,20 +147,22 @@ msgstr[0] "收款人"
 msgid "{} change"
 msgstr "{} 找零"
 
+#. Describes the address type (change or receive)
 #: src/seedsigner/gui/screens/psbt_screens.py
-#: src/seedsigner/models/settings_definition.py
-#: src/seedsigner/views/seed_views.py
-msgid "Multisig"
-msgstr "多重签名"
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "change address"
+msgstr "找零地址"
 
+#. Describes the address type (change or receive)
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Change"
-msgstr "找零"
+#: src/seedsigner/gui/screens/seed_screens.py
+msgid "receive address"
+msgstr "收款地址"
 
-#. Abbreviation for receive address
+#. Symbol for index number, e.g. "address #3"
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Addr"
-msgstr "地址"
+msgid "#"
+msgstr "#"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
 msgid "Address verified!"
@@ -172,8 +174,8 @@ msgid "raw hex data"
 msgstr "原始十六进制数据"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
-msgid "Sign PSBT"
-msgstr "签署 PSBT"
+msgid "Sign Transaction"
+msgstr "签名交易"
 
 #: src/seedsigner/gui/screens/psbt_screens.py
 msgid "Click to approve this transaction"
@@ -220,8 +222,8 @@ msgid "Privacy Leak!"
 msgstr "隐私泄露！"
 
 #: src/seedsigner/gui/screens/screen.py
-msgid "I Understand"
-msgstr "我明白"
+msgid "I understand"
+msgstr "我知道了"
 
 #: src/seedsigner/gui/screens/screen.py
 msgid "Classified Info!"
@@ -244,15 +246,7 @@ msgid ""
 msgstr ""
 "SeedSigner 正在重启。\n"
 "\n"
-"所有的内存数据都将被清除。"
-
-#: src/seedsigner/gui/screens/screen.py
-msgid "Powering Off"
-msgstr "正在关机"
-
-#: src/seedsigner/gui/screens/screen.py
-msgid "Please wait about 30 seconds before disconnecting power."
-msgstr "请等待约 30 秒后再断电"
+"内存数据将被清除。"
 
 #: src/seedsigner/gui/screens/screen.py
 msgid "Just Unplug It"
@@ -272,17 +266,6 @@ msgstr "最终确认助记词"
 #: src/seedsigner/views/seed_views.py
 msgid "fingerprint"
 msgstr "指纹"
-
-#: src/seedsigner/gui/screens/seed_screens.py
-#: src/seedsigner/views/seed_views.py
-msgid "Backup Seed"
-msgstr "备份助记词"
-
-#. Additional explainer for the two seed backup options (mnemonic phrase and
-#. SeedQR).
-#: src/seedsigner/gui/screens/seed_screens.py
-msgid "Backups do not include your passphrase."
-msgstr "备份不包含您的密码短语"
 
 #. Displays the page number and total: (e.g. page 1 of 6)
 #: src/seedsigner/gui/screens/seed_screens.py
@@ -307,14 +290,14 @@ msgstr "派生路径"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 #: src/seedsigner/views/seed_views.py
-msgid "Export Xpub"
-msgstr "导出扩展公钥"
+msgid "Export xpub"
+msgstr "导出 xpub"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "Xpub Details"
 msgstr "扩展公钥详情"
 
-#. Short for "BIP32 Master Fingerprint"
+#. Short for "BIP-32 Master Fingerprint"
 #. a label for the shortened Key-id of a BIP-32 master HD wallet
 #: src/seedsigner/gui/screens/seed_screens.py
 #: src/seedsigner/gui/screens/tools_screens.py
@@ -328,7 +311,6 @@ msgstr "指纹"
 msgid "Derivation"
 msgstr "派生路径"
 
-#. Short for "BIP32 Extended Public Key"
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "Xpub"
 msgstr "Xpub"
@@ -389,7 +371,7 @@ msgid ""
 msgstr "可选择扫描您抄写的 SeedQR，以确认是否读取正确"
 
 #: src/seedsigner/gui/screens/seed_screens.py
-#: src/seedsigner/views/seed_views.py src/seedsigner/views/tools_views.py
+#: src/seedsigner/views/seed_views.py
 msgid "Verify Address"
 msgstr "验证地址"
 
@@ -401,16 +383,6 @@ msgstr "核对地址 {}"
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "Address Verified"
 msgstr "地址验证成功"
-
-#. Describes the address type (change or receive)
-#: src/seedsigner/gui/screens/seed_screens.py
-msgid "change address"
-msgstr "找零地址"
-
-#. Describes the address type (change or receive)
-#: src/seedsigner/gui/screens/seed_screens.py
-msgid "receive address"
-msgstr "收款地址"
 
 #. Describes the address index (e.g. "index 7")
 #: src/seedsigner/gui/screens/seed_screens.py
@@ -457,8 +429,8 @@ msgstr "确认地址"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 #: src/seedsigner/views/seed_views.py
-msgid "Sign Message"
-msgstr "签署留言"
+msgid "Sign message"
+msgstr "签名消息"
 
 #: src/seedsigner/gui/screens/seed_screens.py
 msgid "derivation path"
@@ -505,9 +477,9 @@ msgid ""
 "\n"
 "Donate onchain or LN at:"
 msgstr ""
-"SeedSigner 是 100%% 自由和开源的，由比特币社区独立资助。\n"
+"SeedSigner 是 100%% 自由和开源，由社区独立资助。\n"
 "\n"
-"请通过链上或闪电网络捐赠："
+"链上或闪电网络捐赠："
 
 #: src/seedsigner/gui/screens/settings_screens.py
 #: src/seedsigner/views/settings_views.py
@@ -605,6 +577,11 @@ msgstr "地址浏览器"
 msgid "Wallet descriptor"
 msgstr "钱包描述符"
 
+#. Insert the number of addrs displayed per screen (e.g. "Next 10")
+#: src/seedsigner/gui/screens/tools_screens.py
+msgid "Next {}"
+msgstr "下一步 {}"
+
 #: src/seedsigner/models/settings_definition.py
 msgid "Enabled"
 msgstr "已启用"
@@ -690,6 +667,11 @@ msgid "Single Sig"
 msgstr "单签名"
 
 #: src/seedsigner/models/settings_definition.py
+#: src/seedsigner/views/seed_views.py
+msgid "Multisig"
+msgstr "多重签名"
+
+#: src/seedsigner/models/settings_definition.py
 msgid "Native Segwit"
 msgstr "原生隔离见证"
 
@@ -709,7 +691,7 @@ msgstr "Taproot"
 msgid "Custom Derivation"
 msgstr "自定义派生路径"
 
-#. Terminology used by Electrum seeds; equivalent to bip39 passphrase
+#. Terminology used by Electrum seeds; equivalent to BIP-39 passphrase
 #: src/seedsigner/models/settings_definition.py
 msgid "Custom Extension"
 msgstr "自定义扩展功能"
@@ -802,6 +784,17 @@ msgstr "显示二维码亮度提示"
 msgid "Show partner logos"
 msgstr "显示合作伙伴商标"
 
+#. Hardware settings option to specify the screen driver (e.g. st7789 vs
+#. ili9341)
+#: src/seedsigner/models/settings_definition.py
+msgid "Display type"
+msgstr "显示器类型"
+
+#. Hardware settings option to invert how the screen driver displays colors.
+#: src/seedsigner/models/settings_definition.py
+msgid "Invert colors"
+msgstr "反转颜色"
+
 #: src/seedsigner/models/settings_definition.py
 msgid "QR background color"
 msgstr "二维码背景颜色"
@@ -846,10 +839,11 @@ msgstr "不支持的脚本类型！"
 
 #: src/seedsigner/views/psbt_views.py
 msgid ""
-"PSBT has unsupported input script type, please verify your change addresses."
-msgstr "PSBT 含有不被支持的输入脚本类型，请验证您的找零地址。"
+"Transaction has unsupported input script type, please verify your change "
+"addresses."
+msgstr "交易包含不支持的输入脚本类型，请核对找零地址。"
 
-#: src/seedsigner/views/psbt_views.py
+#: src/seedsigner/views/psbt_views.py src/seedsigner/views/view.py
 msgid "Continue"
 msgstr "继续"
 
@@ -861,9 +855,9 @@ msgstr "全额支出！"
 
 #: src/seedsigner/views/psbt_views.py
 msgid ""
-"This PSBT spends its entire input value. No change is coming back to your "
-"wallet."
-msgstr "该 PSBT 花费了整个输入值。没有找零会回到您的钱包。"
+"This transaction spends its entire input value. No change is coming back to "
+"your wallet."
+msgstr "此交易将花费全部输入金额，不会有找零返回到您的钱包。"
 
 #. Future-tense used to indicate that this transaction will send this amount,
 #. as opposed to "Send" on its own which could be misread as an instant
@@ -874,16 +868,16 @@ msgid "Will Send"
 msgstr "将发送"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Next Recipient"
-msgstr "下一位收款人"
+msgid "Next recipient"
+msgstr "下一个收款方"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Skip Verification"
+msgid "Skip verification"
 msgstr "跳过验证"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Verify Multisig Change"
-msgstr "验证多重签名找零"
+msgid "Verify multisig change"
+msgstr "验证多签找零"
 
 #. The amount you're receiving back from the transaction
 #: src/seedsigner/views/psbt_views.py
@@ -895,7 +889,7 @@ msgid "Self-Transfer"
 msgstr "自我转账"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Verify Multisig Addr"
+msgid "Verify multisig addr"
 msgstr "验证多重签名地址"
 
 #: src/seedsigner/views/psbt_views.py
@@ -908,37 +902,37 @@ msgstr "正在验证自我转账..."
 
 #. Variable is either "change" or "self-transfer".
 #: src/seedsigner/views/psbt_views.py
-msgid "PSBT's {} address could not be verified from wallet descriptor."
-msgstr "钱包描述符无法验证 PSBT 的 {} 地址。"
+msgid "Transaction's {} address could not be verified from wallet descriptor."
+msgstr "交易的 {} 地址无法从钱包描述符中验证。"
 
 #. Variable is either "change" or "self-transfer".
 #: src/seedsigner/views/psbt_views.py
-msgid "PSBT's {} address could not be generated from your seed."
-msgstr "PSBT 的 {} 地址无法从您的种子中生成。"
+msgid "Transaction's {} address could not be generated from your seed."
+msgstr "交易的 {} 地址无法从您的助记词生成。"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Suspicious PSBT"
-msgstr "可疑的 PSBT"
+msgid "Suspicious Transaction"
+msgstr "可疑交易"
 
 #: src/seedsigner/views/psbt_views.py
 msgid "Address Verification Failed"
 msgstr "地址验证已失败"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Discard PSBT"
-msgstr "废弃 PSBT"
+msgid "Discard transaction"
+msgstr "放弃交易"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Approve PSBT"
-msgstr "批准 PSBT"
+msgid "Approve transaction"
+msgstr "授权交易"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "Select Diff Seed"
-msgstr "选择另一个助记词"
+msgid "Select different seed"
+msgstr "选择不同的助记词"
 
 #: src/seedsigner/views/psbt_views.py
-msgid "PSBT Error"
-msgstr "PSBT 出错"
+msgid "Transaction Error"
+msgstr "交易出错"
 
 #: src/seedsigner/views/psbt_views.py
 msgid "Signing Failed"
@@ -960,13 +954,13 @@ msgstr "二维码未被识别或尚未被支持。"
 msgid "Wrong QR Type"
 msgstr "错误的二维码类型"
 
-#: src/seedsigner/views/scan_views.py src/seedsigner/views/seed_views.py
-msgid "Scan PSBT"
-msgstr "扫描 PSBT"
+#: src/seedsigner/views/scan_views.py
+msgid "Scan Transaction"
+msgstr "扫描交易"
 
 #: src/seedsigner/views/scan_views.py
-msgid "Expected a PSBT"
-msgstr "期待一个 PSBT"
+msgid "Expected a transaction"
+msgstr "预期交易"
 
 #: src/seedsigner/views/scan_views.py
 msgid "Scan SeedQR"
@@ -976,7 +970,7 @@ msgstr "扫描 SeedQR"
 msgid "Expected a SeedQR"
 msgstr "期待一个 SeedQR"
 
-#: src/seedsigner/views/scan_views.py
+#: src/seedsigner/views/scan_views.py src/seedsigner/views/seed_views.py
 msgid "Scan descriptor"
 msgstr "扫描描述符"
 
@@ -1000,10 +994,9 @@ msgstr "未知的二维码类型"
 msgid "QRCode is invalid or is a data format not yet supported."
 msgstr "二维码无效或数据格式尚未被支持。"
 
-#: src/seedsigner/views/scan_views.py src/seedsigner/views/seed_views.py
-#: src/seedsigner/views/view.py
-msgid "Done"
-msgstr "完成"
+#: src/seedsigner/views/scan_views.py src/seedsigner/views/view.py
+msgid "Back to Main Menu"
+msgstr "返回主菜单"
 
 #. This is on the opening splash screen, displayed above the HRF logo
 #: src/seedsigner/views/screensaver.py
@@ -1027,6 +1020,10 @@ msgid "Select seed to verify"
 msgstr "选择助记词以进行验证"
 
 #: src/seedsigner/views/seed_views.py
+msgid "Sign Message"
+msgstr "签署留言"
+
+#: src/seedsigner/views/seed_views.py
 msgid "Load the seed to sign with"
 msgstr "加载助记词与之签名"
 
@@ -1043,8 +1040,8 @@ msgid "Create a seed"
 msgstr "创建一个助记词"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Load A Seed"
-msgstr "加载一个助记词"
+msgid "Load a Seed"
+msgstr "加载助记词"
 
 #. Inserts the word number (e.g. "Seed Word #6")
 #: src/seedsigner/views/seed_views.py
@@ -1052,7 +1049,7 @@ msgid "Seed Word #{}"
 msgstr "助记单词 #{}"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Review & Edit"
+msgid "Review & edit"
 msgstr "审核与编辑"
 
 #: src/seedsigner/views/seed_views.py src/seedsigner/views/tools_views.py
@@ -1068,6 +1065,10 @@ msgid "Checksum failure; not a valid seed phrase."
 msgstr "校验和失败；不是有效的助记词。"
 
 #: src/seedsigner/views/seed_views.py
+msgid "Done"
+msgstr "完成"
+
+#: src/seedsigner/views/seed_views.py
 msgid "Edit passphrase"
 msgstr "编辑密码短语"
 
@@ -1076,15 +1077,27 @@ msgid "Discard passphrase"
 msgstr "废弃密码短语"
 
 #: src/seedsigner/views/seed_views.py
+msgid "Skip passphrase"
+msgstr "跳过密码短语"
+
+#: src/seedsigner/views/seed_views.py
 msgid "Discard passphrase?"
 msgstr "是否废弃该密码短语？"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Your current passphrase entry will be erased"
-msgstr "您当前输入的密码短语将被清除"
+msgid "Your current passphrase entry will be erased."
+msgstr "您当前输入的密码短语将被清除。"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Keep Seed"
+msgid "Skip passphrase?"
+msgstr "跳过密码短语？"
+
+#: src/seedsigner/views/seed_views.py
+msgid "You have not entered a passphrase yet."
+msgstr "您尚未输入密码短语。"
+
+#: src/seedsigner/views/seed_views.py
+msgid "Keep seed"
 msgstr "保留助记词"
 
 #. Inserts the seed fingerprint
@@ -1097,32 +1110,48 @@ msgid "Discard Seed?"
 msgstr "是否废弃该助记词？"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Electrum warning"
+msgid "Electrum Warning"
 msgstr "Electrum 警告"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Some features are disabled for Electrum seeds."
-msgstr "某些功能对于 Electrum 格式的助记词是被禁用的。"
+msgstr "某些功能对于 Electrum 格式的助记词是被禁用的"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Verify Addr"
-msgstr "核对地址"
+msgid "Scan transaction"
+msgstr "扫描交易"
+
+#: src/seedsigner/views/seed_views.py src/seedsigner/views/tools_views.py
+msgid "Address explorer"
+msgstr "地址浏览器"
 
 #: src/seedsigner/views/seed_views.py
-msgid "BIP-85 Child Seed"
-msgstr "BIP-85 的子助记词"
+msgid "Backup seed"
+msgstr "备份助记词"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Discard Seed"
-msgstr "废弃该助记词"
+msgid "BIP-85 child seed"
+msgstr "BIP-85 子助记词"
 
 #: src/seedsigner/views/seed_views.py
-msgid "View Seed Words"
+msgid "Discard seed"
+msgstr "弃用助记词"
+
+#: src/seedsigner/views/seed_views.py
+msgid "View seed words"
 msgstr "查看助记词"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Export as SeedQR"
 msgstr "以 SeedQR 的格式导出"
+
+#: src/seedsigner/views/seed_views.py
+msgid "Backup Seed"
+msgstr "备份助记词"
+
+#: src/seedsigner/views/seed_views.py
+msgid "Export Xpub"
+msgstr "导出扩展公钥"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Xpub can be used to view all future transactions."
@@ -1170,7 +1199,7 @@ msgid "BIP-85 Child Index must be between 0 and 2^31-1."
 msgstr "BIP-85 子索引必须介于 0 和 2^31-1 之间。"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Try Again"
+msgid "Try again"
 msgstr "重试"
 
 #: src/seedsigner/views/seed_views.py
@@ -1187,8 +1216,8 @@ msgid "Verify Word #{}"
 msgstr "验证单词 #{}"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Review Seed Words"
-msgstr "审核助记词"
+msgid "Review seed words"
+msgstr "核对助记词"
 
 #. Inserts the word number and the word (e.g. "Word #1 is not "apple"!")
 #: src/seedsigner/views/seed_views.py
@@ -1267,17 +1296,17 @@ msgid "Review SeedQR"
 msgstr "审核 SeedQR"
 
 #: src/seedsigner/views/seed_views.py
+msgid "Your transcribed SeedQR could not be read!"
+msgstr "无法阅读您的 SeedQR！"
+
+#: src/seedsigner/views/seed_views.py
 msgid ""
 "Your transcribed SeedQR successfully scanned and yielded the same seed."
 msgstr "您抄写的 SeedQR 已成功被扫描并生成了相同的助记词。"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Your transcribed SeedQR could not be read!"
-msgstr "无法阅读您所抄写的 SeedQR！"
-
-#: src/seedsigner/views/seed_views.py
 msgid "Sig type can't be auto-detected from this address. Please specify:"
-msgstr "签名类型不能从此地址中自动检测出。请手动指定类型："
+msgstr "签名类型不能从此地址中自动检测出。请手动选择："
 
 #. Option when scanning for a matching address; skips ten addresses ahead
 #: src/seedsigner/views/seed_views.py
@@ -1289,28 +1318,28 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Can't validate a single sig addr without specifying a seed"
-msgstr "在未指定种子类型的情况下，无法验证单一签名地址"
+msgid "Return to transaction"
+msgstr "返回交易"
 
 #: src/seedsigner/views/seed_views.py
-msgid "Scan Descriptor"
-msgstr "扫描描述符"
-
-#: src/seedsigner/views/seed_views.py
-msgid "Return to PSBT"
-msgstr "返回到 PSBT"
+msgid "Verify addr"
+msgstr "验证地址"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Signing messages for custom derivation paths not supported"
 msgstr "不支持为自定义派生路径签署留言"
 
 #: src/seedsigner/views/settings_views.py
-msgid "I/O test"
-msgstr "I/O 测试"
-
-#: src/seedsigner/views/settings_views.py
 msgid "Advanced"
 msgstr "高级"
+
+#: src/seedsigner/views/settings_views.py
+msgid "Hardware"
+msgstr "硬件"
+
+#: src/seedsigner/views/settings_views.py
+msgid "I/O test"
+msgstr "I/O 测试"
 
 #: src/seedsigner/views/settings_views.py
 msgid "Dev Options"
@@ -1332,6 +1361,10 @@ msgstr "新的助记词"
 msgid "Calc 12th/24th word"
 msgstr "计算第 12 或 24 个单词"
 
+#: src/seedsigner/views/tools_views.py
+msgid "Verify address"
+msgstr "核对地址"
+
 #: src/seedsigner/views/tools_views.py src/seedsigner/views/view.py
 msgid "Tools"
 msgstr "工具"
@@ -1345,8 +1378,12 @@ msgid "24 words"
 msgstr "24 个单词"
 
 #: src/seedsigner/views/tools_views.py
-msgid "Mnemonic Length?"
-msgstr "助记词长度？"
+msgid "Mnemonic Length"
+msgstr "助记词长度"
+
+#: src/seedsigner/views/tools_views.py
+msgid "Calculating..."
+msgstr "计算中……"
 
 #. Inserts the number of dice rolls needed for a 12-word mnemonic
 #: src/seedsigner/views/tools_views.py
@@ -1357,10 +1394,6 @@ msgstr "12 个单词 ({} 次掷骰子)"
 #: src/seedsigner/views/tools_views.py
 msgid "24 words ({} rolls)"
 msgstr "24 个单词 ({} 次掷骰子)"
-
-#: src/seedsigner/views/tools_views.py
-msgid "Mnemonic Length"
-msgstr "助记词长度"
 
 #. Label to gather entropy through coin tosses
 #: src/seedsigner/views/tools_views.py
@@ -1392,12 +1425,12 @@ msgstr "扫描钱包描述符"
 
 #. label for addresses where others send us incoming payments
 #: src/seedsigner/views/tools_views.py
-msgid "Receive Addresses"
-msgstr "收款地址"
+msgid "Receive addresses"
+msgstr "接收地址"
 
 #. label for addresses that collect the change from our own outgoing payments
 #: src/seedsigner/views/tools_views.py
-msgid "Change Addresses"
+msgid "Change addresses"
 msgstr "找零地址"
 
 #. a status message that our payment addresses are being calculated
@@ -1412,11 +1445,6 @@ msgstr "自定义派生地址浏览器尚未实施"
 #: src/seedsigner/views/tools_views.py
 msgid "Single sig descriptors not yet supported"
 msgstr "尚不支持单一签名描述符"
-
-#. Insert the number of addrs displayed per screen (e.g. "Next 10")
-#: src/seedsigner/views/tools_views.py
-msgid "Next {}"
-msgstr "下一步 {}"
 
 #: src/seedsigner/views/tools_views.py
 msgid "Receive Addrs"
@@ -1439,7 +1467,7 @@ msgid "Restart"
 msgstr "重启"
 
 #: src/seedsigner/views/view.py
-msgid "Power Off"
+msgid "Power off"
 msgstr "关机"
 
 #: src/seedsigner/views/view.py
@@ -1459,8 +1487,8 @@ msgid "Not Yet Implemented"
 msgstr "尚未实施"
 
 #: src/seedsigner/views/view.py
-msgid "Back to Main Menu"
-msgstr "返回主页"
+msgid "Back to main menu"
+msgstr "返回主菜单"
 
 #. The network setting (mainnet/testnet/regtest) doesn't match the provided
 #. derivation path
@@ -1483,7 +1511,19 @@ msgid "System Error"
 msgstr "系统出错"
 
 #: src/seedsigner/views/view.py
-msgid "Update Setting"
+msgid "Hardware Error"
+msgstr "硬件错误"
+
+#: src/seedsigner/views/view.py
+msgid "Cannot access camera"
+msgstr "无法访问摄像头"
+
+#: src/seedsigner/views/view.py
+msgid "Disconnect power and check for a loose camera connection."
+msgstr "断开电源并检查摄像头连接是否松动。"
+
+#: src/seedsigner/views/view.py
+msgid "Update setting"
 msgstr "更新设置"
 
 #. Inserts the name of a settings option (e.g. "Persistent Settings" is
@@ -1495,3 +1535,15 @@ msgstr "设置中的 ”{}\" 目前处于被禁用的状态。"
 #: src/seedsigner/views/view.py
 msgid "Option Disabled"
 msgstr "选项已被禁用"
+
+#: src/seedsigner/views/view.py
+msgid "Action Required"
+msgstr "需要采取行动"
+
+#: src/seedsigner/views/view.py
+msgid ""
+"You must remove the\n"
+"MicroSD card to continue."
+msgstr ""
+"您必须取出\n"
+"MicroSD 卡才能继续。"
