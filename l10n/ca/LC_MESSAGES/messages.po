@@ -1,26 +1,26 @@
 # Translations template for seedsigner.
-# Copyright (C) 2025 ORGANIZATION
+# Copyright (C) 2026 ORGANIZATION
 # This file is distributed under the same license as the seedsigner project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 # 
 # Translators:
 # notepad, 2024
 # Marcel Hernandez, 2025
-# rogersala21, 2025
+# roger, 2025
 # Jordi Llonch Esteve, 2026
 # Pol Espinasa, 2026
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: seedsigner 0.8.6\n"
+"Project-Id-Version: seedsigner 0.8.7\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-26 07:32-0600\n"
+"POT-Creation-Date: 2026-03-05 22:02+0000\n"
 "PO-Revision-Date: 2022-04-29 13:50+0000\n"
 "Last-Translator: Pol Espinasa, 2026\n"
 "Language-Team: Catalan (https://app.transifex.com/seedsigner/teams/135832/ca/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 "Language: ca\n"
@@ -609,6 +609,21 @@ msgstr "Indicacions"
 msgid "Required"
 msgstr "Requerit"
 
+#. QR code format option; "default" = this is the format most wallets use
+#: src/seedsigner/models/settings_definition.py
+msgid "Animated (default)"
+msgstr "Animat (per defecte)"
+
+#. QR code format option (static = single frame, not animated)
+#: src/seedsigner/models/settings_definition.py
+msgid "Static"
+msgstr "Estàtic"
+
+#. QR code format option: old format that Specter Desktop used to use
+#: src/seedsigner/models/settings_definition.py
+msgid "Specter legacy"
+msgstr "Specter legacy"
+
 #: src/seedsigner/models/settings_definition.py
 msgid "BTC"
 msgstr "BTC"
@@ -702,6 +717,17 @@ msgstr "Taproot"
 msgid "Custom Derivation"
 msgstr "Derivació Personalitzada"
 
+#. MicroSD notification duration setting - Display notification for 5 seconds
+#: src/seedsigner/models/settings_definition.py
+msgid "5 seconds"
+msgstr "5 segons"
+
+#. MicroSD notification duration setting - Display notification until the SD
+#. card is removed
+#: src/seedsigner/models/settings_definition.py
+msgid "Until SD removed"
+msgstr "Fins que la SD és retirada"
+
 #. Terminology used by Electrum seeds; equivalent to BIP-39 passphrase
 #: src/seedsigner/models/settings_definition.py
 msgid "Custom Extension"
@@ -720,10 +746,6 @@ msgid "Persistent settings"
 msgstr "Preferències persistents"
 
 #: src/seedsigner/models/settings_definition.py
-msgid "Coordinator software"
-msgstr "Programari coordinador"
-
-#: src/seedsigner/models/settings_definition.py
 msgid "Denomination display"
 msgstr "Denominació"
 
@@ -736,16 +758,16 @@ msgid "QR code density"
 msgstr "Densitat del codi QR"
 
 #: src/seedsigner/models/settings_definition.py
-msgid "Xpub export"
-msgstr "Exportar Xpub"
-
-#: src/seedsigner/models/settings_definition.py
 msgid "Sig types"
 msgstr "Tipus de signatura"
 
 #: src/seedsigner/models/settings_definition.py
 msgid "Script types"
 msgstr "Tipus de scripts"
+
+#: src/seedsigner/models/settings_definition.py
+msgid "Xpub QR format"
+msgstr "Xpub en format QR"
 
 #: src/seedsigner/models/settings_definition.py
 msgid "Show xpub details"
@@ -774,6 +796,10 @@ msgstr "Llavors d'Electrum"
 #: src/seedsigner/models/settings_definition.py
 msgid "Native Segwit only"
 msgstr "Només Native Segwit"
+
+#: src/seedsigner/models/settings_definition.py
+msgid "MicroSD notification duration"
+msgstr "Duració de la notificació de la MicroSD"
 
 #: src/seedsigner/models/settings_definition.py
 msgid "Message signing"
@@ -905,7 +931,7 @@ msgstr "Autotransferència"
 
 #: src/seedsigner/views/psbt_views.py
 msgid "Verify multisig addr"
-msgstr "Verificar adreça multisignatura"
+msgstr "Verificar adreça multisig"
 
 #: src/seedsigner/views/psbt_views.py
 msgid "Verifying Change..."
@@ -1171,6 +1197,10 @@ msgid "Export Xpub"
 msgstr "Exportar Xpub"
 
 #: src/seedsigner/views/seed_views.py
+msgid "Xpub QR Format"
+msgstr "Xpub en format QR"
+
+#: src/seedsigner/views/seed_views.py
 msgid "Xpub can be used to view all future transactions."
 msgstr "La Xpub permet veure totes les futures transaccions."
 
@@ -1350,6 +1380,11 @@ msgstr "Torna a la transacció"
 msgid "Verify addr"
 msgstr "Verificar adreça"
 
+#. Multisig policy. For a "2 of 3" policy, "threshold" = 2; "n" = 3
+#: src/seedsigner/views/seed_views.py
+msgid "{threshold} of {n}"
+msgstr "{threshold} de {n}"
+
 #: src/seedsigner/views/seed_views.py
 msgid "Signing messages for custom derivation paths not supported"
 msgstr ""
@@ -1370,6 +1405,24 @@ msgstr "Test d'Entrada/Sortida"
 #: src/seedsigner/views/settings_views.py
 msgid "Dev Options"
 msgstr "Opcions Dev"
+
+#. Title of a warning dialog when configuring a setting that requires at least
+#. one option to be selected.
+#: src/seedsigner/views/settings_views.py
+msgid "Selection Required"
+msgstr "Selecció necessària"
+
+#. The name of the setting being configured (e.g. "Script types") will be
+#. inserted.
+#: src/seedsigner/views/settings_views.py
+msgid "At least one option must be selected for \"{}\"."
+msgstr "Almenys una opció s'ha de seleccionar de \"{}\"."
+
+#. Text for the button that returns the user to the setting configuration
+#. screen.
+#: src/seedsigner/views/settings_views.py
+msgid "Return to setting"
+msgstr "Tornar a la configuració"
 
 #: src/seedsigner/views/settings_views.py
 msgid "Persistent Settings enabled. Settings saved to SD card."
@@ -1461,6 +1514,11 @@ msgstr "Adreces de recepció"
 msgid "Change addresses"
 msgstr "Adreces de canvi"
 
+#. Multisig policy. For a "2 / 3 multisig" policy, "threshold" = 2; "n" = 3
+#: src/seedsigner/views/tools_views.py
+msgid "{threshold} / {n} multisig"
+msgstr "{threshold} / {n} multisig"
+
 #. a status message that our payment addresses are being calculated
 #: src/seedsigner/views/tools_views.py
 msgid "Calculating addrs..."
@@ -1529,10 +1587,12 @@ msgstr "Les Xarxes No Coincideixen"
 msgid "Change Setting"
 msgstr "Canvia la configuració"
 
-#. Inserts mainnet/testnet/regtest and derivation path
+#. "network" will be mainnet/testnet/regtest.
 #: src/seedsigner/views/view.py
-msgid "Current network setting ({}) doesn't match {}."
-msgstr "Les preferències de xarxa actuals ({}) no coincideixen amb {}."
+msgid "Current network setting ({network}) doesn't match {derivation_path}."
+msgstr ""
+"Les preferències de xarxa actuals ({network}) no coincideixen amb "
+"{derivation_path}."
 
 #: src/seedsigner/views/view.py
 msgid "System Error"
