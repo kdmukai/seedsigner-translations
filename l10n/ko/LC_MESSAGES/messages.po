@@ -1312,7 +1312,7 @@ msgstr "시드QR 확인할까요?"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Scan your SeedQR"
-msgstr "시드QR을 스캔하세요"
+msgstr "SeedQR를 스캔하세요"
 
 #: src/seedsigner/views/seed_views.py
 msgid "Error!"
